@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/layout.css">
+    <link
+    rel="stylesheet"
+    href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" integrity="sha512-0p3K0H3S6Q4bEWZ/WmC94Tgit2ular2/n0ESdfEX8l172YyQj8re1Wu9s/HT9T/T2osUw5Gx/6pAZNk3UKbESw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js" integrity="sha512-nKZDK+ztK6Ug+2B6DZx+QtgeyAmo9YThZob8O3xgjqhw2IVQdAITFasl/jqbyDwclMkLXFOZRiytnUrXk/PM6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+
+    <%- include('_header'); -%>
+        
+    <%- body %>
+
+    <%- include('_footer'); -%>
+
+
+    <script>
+      <% if (flash.success && flash.success.length > 0) {%>
+              new Noty({
+                  theme: 'relax',
+                  text: "<%= flash.success %>",
+                  type: 'success',
+                  layout: 'topRight',
+                  timeout: 1500
+                  
+              }).show();    
+          <%} %>
+          <% if (flash.error && flash.error.length > 0) {%>
+              new Noty({
+                  theme: 'relax',
+                  text: "<%= flash.error %>",
+                  type: 'error',
+                  layout: 'topRight',
+                  timeout: 1500
+                  
+              }).show();    
+          <%} %>
+  </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/jquery.js"></script>
+    
+</body>
+</html>

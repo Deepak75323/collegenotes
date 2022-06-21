@@ -1,0 +1,159 @@
+<section class="work section">
+
+ <h2 data-heading="INFORMATION" class="section__title"><%= subject.subname %></h2>
+
+
+<div class="work__container container grid">
+  
+
+<% for (notes of subject.resources) 
+{%>     
+      
+    
+   <% if(notes.books!='unavailable' && notes.bookslink!='unavailable' )
+   {%>
+
+  
+      <div class="work__card mix first">
+
+      <% if(locals.user && locals.user.id==notes.user.id)
+      {%>
+      <a href="/notes/destroy/<%=notes.id%>" class="work__edit">
+        <i class="uil uil-trash-alt"></i>
+      </a>
+      <%}%>
+
+        <img src="/images/books.webp" alt="" class="work__img">
+               <h3 class="work__title"><%= notes.books %></h3>
+           
+               <span class="work__button">
+               
+                 <a href="<%=notes.bookslink%>">DOWNLOAD</a>
+                 <i class="uil uil-download-alt work__button-icon"></i>
+               </span>
+                
+         </div>
+      
+        
+      <%}%> 
+<%}
+%>
+   
+</div>
+
+
+
+<br>
+<br>
+
+<h2 data-heading="" class="section__title">PAPERS</h2>
+<div class="work__container container grid">
+  
+
+    <% for(notes of subject.resources) 
+    {%>     
+      <% if(notes.papersyear!='unavailable' && notes.paperslink!='unavailable' )
+      {%>
+    
+                <div class="work__card mix first">
+
+              <% if(locals.user && locals.user.id==notes.user.id)
+              {%>
+             <a href="/notes/destroy/<%=notes.id%>" class="work__edit">
+               <i class="uil uil-trash-alt"></i>
+             </a>
+             <%}%>
+                
+                <img src="/images/question2.webp" alt="" class="work__img">
+                   <h3 class="work__title"><%= notes.papersyear %></h3>
+               
+                   <span class="work__button">
+                   
+                     <a href="<%=notes.paperslink%>">DOWNLOAD</a>
+                     <i class="uil uil-download-alt work__button-icon"></i>
+                   </span>
+                    
+                   </div>
+          
+      <%}%> 
+           
+    <%}
+    %>
+       
+    </div>
+
+
+
+
+
+
+
+
+    <br>
+    <br>
+
+    <h2 data-heading="" class="section__title">NOTES</h2>
+    <div class="work__container container grid">
+  
+
+        <% for(notes of subject.resources) 
+        {%>     
+              
+          <% if(notes.notes!='unavailable' && notes.noteslink!='unavailable' )
+        {%>
+                    <div class="work__card mix first">
+                        <% if(locals.user && locals.user.id==notes.user.id)
+                        {%>
+                 <a href="/notes/destroy/<%=notes.id%>" class="work__edit">
+                   <i class="uil uil-trash-alt"></i>
+                 </a>
+                 <%}%>
+                        <img src="/images/question.webp" alt="" class="work__img">
+                       <h3 class="work__title"><%= notes.notes %></h3>
+                   
+                       <span class="work__button">
+                       
+                         <a href="<%=notes.notesslink%>">DOWNLOAD</a>
+                         <i class="uil uil-download-alt work__button-icon"></i>
+                       </span>
+                        
+                       </div>
+              
+          <%}%> 
+               
+        <%} %>
+           
+</div>
+
+<br>
+
+
+
+<% if(locals.user && locals.user.isAdmin) { %>
+
+<div class="new_blog">
+        <h3 class="Adding_blog">Add Notes</h3>
+        
+        <form action="/notes/create" method="POST">
+          <h2 style="margin:3px;">NAME OF BOOK</h2>
+          <input type="text" name="books" style="width:500px;padding:4px;" placeholder="type unavailable if not available" class="blog_title">
+          <h2 style="margin:3px;">LINK OF BOOK </h2>
+          <input type="text" name="bookslink" style="width:500px;padding:4px;" placeholder="type unavailable if not available" class="blog_category">
+          <h2 style="margin:3px;">PAPER-YEAR</h2>
+          <input type="text" name="papersyear" style="width:500px;padding:4px;" placeholder="type unavailable if not available" class="blog_category">
+          <h2 style="margin:3px;">PAPER-LINK</h2>
+          <input type="text" name="paperslink" style="width:500px;padding:4px;" placeholder="type unavailable if not available" class="blog_category">
+          <h2 style="margin:3px;">NOTES</h2>
+          <input type="text" name="notes" style="width:500px;padding:4px;" placeholder="type unavailable if not available" class="blog_category">
+          <h2 style="margin:3px;">LINK OF NOTES</h2>
+          <input type="text" name="noteslink" style="width:500px;padding:4px;" placeholder="type unavailable if not available" class="blog_category">
+          <input type="hidden" name="subject" value="<%=subject._id%>" style="width:500px;padding:4px;" placeholder="type unavailable if not available" class="blog_category">
+    
+        <div>
+          <input type="submit" class="blog_upload" name="submit" style="width:500px;padding:4px;margin:10px;" value="Upload" class="blog_submit">
+          </div>
+        </form>
+      </div>
+<%}%>
+
+</section>

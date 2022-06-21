@@ -1,0 +1,33 @@
+<nav class="navbar">
+    <div class="max-width">
+  
+    <ul class="menu">
+            <li><a href="/" class="menu-btn">Home</a></li>
+           
+  
+     </ul>
+
+     <ul class="menu">
+        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdUkNmXpaEeYWLDVZYsehwwsknu7z6EF7ZftkgcKbso5kmaIA/viewform?usp=sf_link" class="menu-btn">Feedback Form</a></li>
+     
+
+
+     <% if (locals.user)
+     {%>
+         <li>
+         <a href="#" class="menu-btn"><%= user.name %></a>
+         </li>
+     <li>
+       <a href="/signout" class="menu-btn">sign out</a>
+     </li>
+   <%}
+   else
+   {%>
+<li>
+<a href="/signin" class="menu-btn">sign in</a>
+</li>
+<%}%>
+        </ul>
+        
+    </div>
+  </nav>

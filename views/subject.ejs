@@ -1,0 +1,71 @@
+<section class="work section">
+  <h2 data-heading="INFORMATION" class="section__title">SUBJECTS</h2>
+
+  <div class="work__container container grid">
+    <% for(subject of subjects) {%>
+
+     <% if(subject.branch==branch)
+      {%>
+
+
+
+        <div class="work__card mix first">
+          <% if(locals.user && locals.user.isAdmin && locals.user.id==subject.user.id) { %>
+          <a href="/resources/destroy/<%=subject.id%>" class="work__edit">
+            <i class="uil uil-trash-alt"></i>
+          </a>
+          <% }%>
+          <img src="/images/subject2.webp" alt="" class="work__img" />
+          <h3 class="work__title"><%= subject.subname %></h3>
+    
+          <span class="work__button">
+            <a href="/resources/<%=subject.id%>">Click here</a>
+            <i class="uil uil-arrow-right work__button-icon"></i>
+          </span>
+        </div>
+     <%}%>
+   
+
+    <%} %>
+  </div>
+
+
+
+  <% if(locals.user && locals.user.isAdmin) { %>
+  <div class="new_blog">
+    <h3 class="Adding_blog">ADD SUBJECTS</h3>
+
+    <form action="/resources/create" method="POST">
+      <h2 style="margin: 3px">
+        Enter the subject name of <%= branch %> branch
+      </h2>
+      <input
+        type="text"
+        name="subname"
+        style="width: 500px; padding: 4px"
+        placeholder="Title"
+        class="blog_title"
+      />
+      <h2 style="margin: 3px">Enter Your Branch</h2>
+      <input
+        type="text"
+        name="branch"
+        style="width: 500px; padding: 4px"
+        placeholder="categoty"
+        class="blog_category"
+      />
+
+      <div>
+        <input
+          type="submit"
+          class="blog_upload"
+          name="submit"
+          style="width: 500px; padding: 4px; margin: 10px"
+          value="Upload"
+          class="blog_submit"
+        />
+      </div>
+    </form>
+  </div>
+  <%}%>
+</section>
