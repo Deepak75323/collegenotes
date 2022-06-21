@@ -1,2 +1,2 @@
-node modules/
-.env
+node_modules/
+.env_example
